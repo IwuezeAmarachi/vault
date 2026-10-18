@@ -15,8 +15,8 @@
   --sec-y:clamp(64px,8vw,120px);
   --head-gap:clamp(36px,4.5vw,64px);
   --ease:cubic-bezier(.22,.7,.2,1);
-  --f:"Manrope",system-ui,sans-serif;
-  --fd:"Urbanist","Manrope",system-ui,sans-serif;
+  --f:"Urbanist",system-ui,sans-serif;
+  --fd:"Urbanist",system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
