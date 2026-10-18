@@ -168,7 +168,7 @@
   };
   const frame = (now) => {
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
-    tick(dt);
+    tick(dt * 1.8);
     raf = requestAnimationFrame(frame);
   };
   window.__market = { seek(sec) { reset(); i = 0; el = 0; begin(); for (let t = 0; t < sec; t += 1 / 60) tick(1 / 60); } };

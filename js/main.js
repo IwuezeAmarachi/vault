@@ -52,6 +52,22 @@
     if (t) goTo(t, -90);
   });
 
+  /* ---------- scroll-linked parallax on illustrations ---------- */
+  if (!reduce) {
+    const items = [...document.querySelectorAll('.role__img, .hero__art, .pcard__ico')].map((el) => ({ el, k: el.matches('.hero__art') ? 0.06 : el.matches('.role__img') ? 0.07 : 0.05 }));
+    const par = () => {
+      const vh = innerHeight;
+      items.forEach(({ el, k }) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -100 || r.top > vh + 100) return;
+        const d = (r.top + r.height / 2 - vh / 2) * k;
+        el.style.translate = `0 ${(-d).toFixed(1)}px`;
+      });
+    };
+    if (lenis) lenis.on('scroll', par); else addEventListener('scroll', par, { passive: true });
+    par();
+  }
+
   /* ---------- reveal ---------- */
   const io = new IntersectionObserver((es) => es.forEach((en) => {
     if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
