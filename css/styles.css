@@ -44,7 +44,7 @@ ul,ol{list-style:none}
 .js .reveal.in{opacity:1;transform:none}
 
 /* type scale — one set of sizes for the whole page */
-h1{font:700 clamp(34px,4.2vw,56px)/1.1 var(--fd);letter-spacing:-.04em;color:var(--head)}
+h1{font:700 clamp(30px,2.78vw,40px)/1.15 var(--fd);letter-spacing:-.04em;color:var(--head)}
 h2{font:700 clamp(28px,3.4vw,44px)/1.15 var(--f);letter-spacing:-.04em;color:var(--ink)}
 h3{font:600 clamp(22px,2.1vw,28px)/1.2 var(--f);letter-spacing:-.035em;color:var(--ink)}
 .lead{font:400 clamp(17px,1.45vw,20px)/1.5 var(--f);color:var(--muted)}
@@ -111,7 +111,7 @@ p{font:400 16px/1.5 var(--f)}
 .role--seller .role__ell--2{left:39.5%;top:-17%}
 .role__txt{position:relative;z-index:1;padding:clamp(28px,3.4vw,52px) clamp(24px,3vw,48px) 0;max-width:62%}
 .chip{align-self:flex-start;background:#fff;color:#04300b;font:600 clamp(17px,1.5vw,20px)/1 var(--f);letter-spacing:-.03em;padding:12px 14px;border-radius:3px}
-.role__txt p{font:500 clamp(18px,1.67vw,24px)/1.25 var(--f);letter-spacing:-.035em;max-width:16em}
+.role__txt h3{font:600 clamp(22px,2vw,28px)/1.22 var(--f);letter-spacing:-.035em;color:inherit;max-width:13em}
 .role__img{position:absolute;left:50%;top:33.7%;width:87.8%;height:92.9%;transform:translateX(-50%);overflow:hidden}
 .role__img--s{top:31.7%;width:108.4%;height:82.8%}
 .role:hover .crop img{transform:scale(1.04)}
@@ -122,7 +122,7 @@ p{font:400 16px/1.5 var(--f)}
 .step{display:flex;flex-direction:column;gap:28px}
 .step__img{position:relative;aspect-ratio:470/520;background:var(--card);border-radius:20px;overflow:hidden}
 .step__img .fit{position:absolute;left:50%;top:6%;width:110.6%;max-width:none;height:auto;transform:translateX(-50%)}
-.step__box{position:absolute;left:50%;transform:translateX(-50%)}
+.step__box{position:absolute;left:50%;transform:translateX(-50%);overflow:hidden}
 .step__box.s1{width:74.5%;aspect-ratio:350/330;top:18.8%}
 .step__box.s2{width:63.8%;aspect-ratio:300/351;top:16.7%}
 .step__box.s4{width:63.8%;aspect-ratio:300/343;top:16.8%}
@@ -166,8 +166,9 @@ p{font:400 16px/1.5 var(--f)}
 .foot__txt p{font:400 clamp(16px,1.4vw,19px)/1.45 var(--f);max-width:21em;color:rgba(255,255,255,.9)}
 .logo--lg{font-size:clamp(34px,3.3vw,44px);color:#fff}
 .logo--lg img{width:34px;height:34px}
-.foot__img{position:absolute;left:16.8%;top:50%;width:91.8%;height:83.4%;overflow:hidden}
-.foot__card--dark:hover .crop img{transform:scale(1.04)}
+.foot__scene{position:absolute;left:11%;bottom:-7.3%;width:78%;aspect-ratio:1}
+.foot__scene svg{width:100%;height:100%;overflow:visible;display:block}
+#signboard{transform-box:fill-box;transform-origin:center}
 .foot__cols{position:relative;z-index:1;display:flex;justify-content:space-between;gap:24px;padding:clamp(48px,6.3vw,88px) clamp(24px,6vw,86px) 0 clamp(24px,6vw,86px)}
 .foot__cols h3{font:700 clamp(20px,1.8vw,26px)/1 var(--f);letter-spacing:-.02em;color:#fff;margin-bottom:22px}
 .foot__cols ul{display:flex;flex-direction:column;gap:12px}
@@ -201,7 +202,8 @@ p{font:400 16px/1.5 var(--f)}
   .prot__grid{grid-template-columns:1fr}
   .pcard{aspect-ratio:auto;min-height:260px}
   .foot{grid-template-columns:1fr}
-  .foot__card{aspect-ratio:auto;min-height:520px}
+  .foot__card{aspect-ratio:auto;min-height:560px}
+  .foot__scene{bottom:-6%;left:6%;width:88%}
   .foot__cols{padding-top:72px}
   .foot__copy{bottom:96px}
 }
@@ -215,3 +217,23 @@ p{font:400 16px/1.5 var(--f)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .js .reveal{opacity:1;transform:none}
 }
+
+/* ---------- illustration scenes (layers animated in place) ---------- */
+.scene{position:absolute;left:var(--l,0);top:var(--t,0);width:var(--w,100%);height:var(--h,100%);overflow:visible;display:block}
+.scene--fit{left:50%;top:6%;width:110.6%;height:auto;aspect-ratio:1;transform:translateX(-50%)}
+.scene image{transform-box:view-box}
+.a1-folders{animation:foldersLift 5.6s ease-in-out infinite}
+@keyframes foldersLift{0%,10%{transform:translateY(0)}34%,58%{transform:translateY(-30px)}82%,100%{transform:translateY(0)}}
+.a2-door{transform-origin:108px 250px;animation:doorSwing 6.4s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes doorSwing{0%,14%{transform:none}38%,60%{transform:scaleX(1.3) skewY(-18deg)}84%,100%{transform:none}}
+.a3-money{transform-origin:480px 150px;animation:handMoney 3.4s ease-in-out infinite alternate}
+.a3-box{transform-origin:160px 330px;animation:handBox 3.4s ease-in-out infinite alternate}
+@keyframes handMoney{to{transform:translate(-34px,20px) rotate(-4deg)}}
+@keyframes handBox{to{transform:translate(14px,-10px) rotate(1.8deg)}}
+.a4-card{animation:payCard 5.4s cubic-bezier(.3,.7,.2,1) infinite}
+@keyframes payCard{0%{opacity:0;transform:translateX(70px)}18%,76%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateX(70px)}}
+.a4-circle{transform-origin:171px 263px;animation:payCircle 5.4s cubic-bezier(.3,.7,.2,1) infinite}
+@keyframes payCircle{0%,16%{opacity:0;transform:scale(0)}28%{opacity:1;transform:scale(1.15)}36%,76%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(0)}}
+.a4-sparks{transform-origin:303px 133px;animation:paySparks 5.4s ease-in-out infinite}
+@keyframes paySparks{0%,34%{opacity:0;transform:scale(.4)}42%{opacity:1;transform:scale(1.15)}50%{opacity:.35}58%{opacity:1;transform:scale(1)}76%{opacity:1}92%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.scene image{animation:none!important}}
